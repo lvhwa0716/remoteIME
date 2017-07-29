@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+        package="com.lvh.remoteime" android:versionName="1.0" android:versionCode="1" >
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application android:label="@string/ime_name">
+        <service android:name="SoftKeyboard"
+                android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data android:name="android.view.im" android:resource="@xml/method" />
+        </service>
+        <receiver android:name="ADBStatus">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE"/>
+            </intent-filter>
+        </receiver>
+		<activity android:name=".MainActivity"/>
+    </application>
+</manifest>
